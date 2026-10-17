@@ -41,17 +41,10 @@
 <main id="main">
 <section class="hero" id="top" aria-label="Legacive Barber Studio, Uxbridge">
   <div class="hero__media">
-    <img class="hero__poster" src="assets/img/poster_hero.webp" alt="">
-    <video class="hero__ambient" data-auto muted playsinline loop preload="metadata" src="assets/video/ambient.mp4" aria-hidden="true"></video>
-    <div class="hero__wash"></div><div class="hero__sweep"></div><div class="hero__spot"></div><div class="hero__shade"></div>
+    <picture><source media="(max-width:900px)" srcset="assets/img/poster_showreel.webp"><img class="hero__poster" src="assets/img/poster_wide.webp" alt="" fetchpriority="high"></picture>
+    <video class="hero__video" data-auto muted playsinline loop autoplay preload="auto" data-wide="assets/video/hero-wide.mp4" data-tall="assets/video/showreel.mp4" aria-label="Cuts and the studio at Legacive"></video>
+    <div class="hero__shade"></div>
   </div>
-  <div class="hero__mark" aria-hidden="true"><svg class="hero__hex hex-svg" viewBox="-130 -130 260 260"></svg></div>
-  <div class="hero__reel">
-    <div class="hero__reel-glow hex" aria-hidden="true"></div><div class="hero__reel-frame hex" aria-hidden="true"></div>
-    <div class="hero__reel-in hex"><img src="assets/img/poster_showreel.webp" alt=""><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_showreel.webp" src="assets/video/showreel.mp4" aria-label="Showreel of cuts at Legacive"></video></div>
-    <span class="hero__reel-tag"><span class="dot"></span>Live from the chair</span>
-  </div>
-  <div class="hero__tools"><button class="chip" id="playBtn" aria-label="Pause video"><svg viewBox="0 0 24 24" fill="currentColor"><path id="playIco" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><span>Reel</span></button></div>
   <div class="hero__inner wrap">
     <div class="hero__eyebrow"><span class="tag"><span class="dot"></span>Appointments only</span><span class="tag">24 Brock St W</span><span class="tag">Uxbridge, Ontario</span></div>
     <h1 class="hero__title" aria-label="Feel the difference"><span class="line split">Feel the</span><span class="line split glow">difference.</span></h1>

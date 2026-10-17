@@ -717,3 +717,28 @@ a.ccard:hover{border-color:var(--color-gold);transform:translateY(-3px)}
 .hero__reel-in video,.phero__media video,.studio__video video{transition:opacity .8s var(--ease-out)}
 img{content-visibility:auto}
 .foot{padding-bottom:96px}
+
+/* ═════════ FULL-SCREEN HERO VIDEO ═════════ */
+.hero__poster{filter:none;transform:none;transition:opacity .8s var(--ease-out)}
+.hero__video{opacity:0;filter:none;object-position:50% 50%;transition:opacity .9s var(--ease-out)}
+.hero__shade{display:block;background:linear-gradient(90deg,rgb(5 5 6 / .82) 0%,rgb(5 5 6 / .55) 34%,rgb(5 5 6 / .08) 62%,transparent 80%),linear-gradient(180deg,rgb(5 5 6 / .6) 0%,transparent 22%,transparent 62%,rgb(5 5 6 / .7) 86%,var(--color-ink) 100%)}
+.hero__inner{padding-right:var(--gutter)}
+@media (min-width:901px){.hero__title{font-size:min(10.5vw,24svh)}.hero__inner{padding-right:var(--gutter)}.hero__row{max-width:760px}}
+@media (max-width:900px){.hero__shade{display:block;background:linear-gradient(180deg,rgb(5 5 6 / .55) 0%,transparent 26%,transparent 40%,rgb(5 5 6 / .8) 70%,var(--color-ink) 100%)}}
+
+/* ═════════ COMPACT FOOTER (about half height) ═════════ */
+.foot{padding:16px 0 76px}
+.foot__big{font-size:clamp(2.6rem,8.4vw,8rem);margin-bottom:6px;padding-top:.12em}
+.foot__cols{gap:var(--space-lg);padding-block:8px 6px;align-items:start}
+.foot__cols h4{margin-bottom:8px}
+.foot__cols ul{gap:4px}
+.foot__cols a{font-size:13px}
+.foot__cols>div:nth-child(2) ul{grid-template-columns:repeat(2,auto);column-gap:22px;justify-content:start}
+.foot__cols p{display:none}
+.foot__logo{width:44px;height:44px}
+.foot__legal{margin-top:10px;padding-top:10px}
+.nx{padding:7px 8px 7px 12px}
+.nx__mark{width:20px}
+.nx__go{height:30px}
+@media (max-width:800px){.foot__cols{gap:14px 18px}}
+@media (min-width:901px){.hero__shade{background:linear-gradient(90deg,rgb(5 5 6 / .88) 0%,rgb(5 5 6 / .66) 38%,rgb(5 5 6 / .18) 66%,transparent 84%),linear-gradient(180deg,rgb(5 5 6 / .6) 0%,transparent 22%,transparent 62%,rgb(5 5 6 / .7) 86%,var(--color-ink) 100%)}}

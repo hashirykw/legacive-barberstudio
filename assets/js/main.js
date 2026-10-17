@@ -18,6 +18,16 @@
   const page = d.body.dataset.page;
   $$('[data-nav]').forEach(a => { if (a.dataset.nav === page) a.setAttribute('aria-current', 'page'); });
 
+  /* ---------- hero video: widescreen triptych on desktop, portrait reel on phones ---------- */
+  const hv = $('.hero__video');
+  if (hv && hv.dataset.wide) {
+    hv.src = matchMedia('(max-width: 900px)').matches ? hv.dataset.tall : hv.dataset.wide;
+    hv.addEventListener('playing', () => { const p = $('.hero__poster'); if (p) p.style.opacity = 0; });
+    // never let the hero sit paused: resume after tab switches or stalls
+    d.addEventListener('visibilitychange', () => { if (!d.hidden && !RM) hv.play().catch(() => {}); });
+    hv.addEventListener('stalled', () => { if (!RM) hv.play().catch(() => {}); });
+  }
+
   /* ---------- videos: play only while on screen ---------- */
   $$('video[data-auto]').forEach(v => {
     v.muted = true; v.playsInline = true;
@@ -409,7 +419,7 @@
     kw.innerHTML = [...kw.textContent].map(c => '<span' + (c === 'I' ? ' class="i"' : '') + '>' + c + '</span>').join('');
     const kL = $$('span', kw);
     gsap.set(kL, { yPercent: 115 }); gsap.set(ks, { opacity: 0, y: 10 }); gsap.set(['.nav', '.bot-fab'], { autoAlpha: 0 });
-    const grade = $$('.hero__shade, .hero__scan, .hero__wash'), gradeOp = grade.map(el => parseFloat(getComputedStyle(el).opacity) || 1);
+    const grade = $$('.hero__shade'), gradeOp = grade.map(el => parseFloat(getComputedStyle(el).opacity) || 1);
     gsap.set(grade, { opacity: 0 }); gsap.set('.hero__media', { scale: 1.3 });
     const fontsReady = Promise.race([(d.fonts && d.fonts.load) ? d.fonts.load('900 100px "Big Shoulders Display"') : Promise.resolve(), new Promise(r => setTimeout(r, 500))]);
     fontsReady.then(() => {
@@ -442,13 +452,11 @@
     h.addEventListener('pointerleave', () => chs.forEach(c => { gsap.to(c, { yPercent: 0, duration: .7, ease: 'elastic.out(1,.45)', overwrite: 'auto' }); c.classList.remove('is-up'); }));
   });
   if (heroHex) gsap.to(heroHex.g, { rotation: 360, svgOrigin: '0 0', duration: 160, ease: 'none', repeat: -1 });
-  if (hero && FINE) { const mx = gsap.quickTo('.hero__mark', 'x', { duration: 1, ease: 'power3' }), my = gsap.quickTo('.hero__mark', 'y', { duration: 1, ease: 'power3' }); hero.addEventListener('pointermove', e => { mx((e.clientX / innerWidth - .5) * -40); my((e.clientY / innerHeight - .5) * -30); }); }
 
   /* hero scroll: shrink into a framed reel */
   if (hero) gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } })
     .to('.hero__media', { scale: .84, yPercent: 8, borderRadius: 36, ease: 'none' }, 0)
-    .to('.hero__inner', { yPercent: -18, opacity: .2, ease: 'none' }, 0)
-    .to('.hero__mark', { yPercent: -35, scale: 1.15, ease: 'none' }, 0);
+    .to('.hero__inner', { yPercent: -18, opacity: .2, ease: 'none' }, 0);
   const ph = $('.phero');
   if (ph) gsap.timeline({ scrollTrigger: { trigger: ph, start: 'top top', end: 'bottom top', scrub: true } })
     .to('.phero__media', { scale: 1.12, yPercent: 10, ease: 'none' }, 0)
