@@ -21,7 +21,9 @@
   /* ---------- hero video: widescreen triptych on desktop, portrait reel on phones ---------- */
   const hv = $('.hero__video');
   if (hv && hv.dataset.wide) {
-    hv.src = matchMedia('(max-width: 900px)').matches ? hv.dataset.tall : hv.dataset.wide;
+    if (matchMedia('(max-width: 900px)').matches && hv.dataset.tall) { hv.src = hv.dataset.tall; hv.load(); }
+    const kick = () => { if (!RM && hv.paused) hv.play().catch(() => {}); };
+    hv.addEventListener('canplay', kick); kick();
     hv.addEventListener('playing', () => { const p = $('.hero__poster'); if (p) p.style.opacity = 0; });
     // never let the hero sit paused: resume after tab switches or stalls
     d.addEventListener('visibilitychange', () => { if (!d.hidden && !RM) hv.play().catch(() => {}); });
