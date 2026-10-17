@@ -1,3 +1,8 @@
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;src:url(../fonts/big-shoulders-display-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:900;font-display:swap;src:url(../fonts/big-shoulders-display-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;src:url(../fonts/archivo-latin-wght-normal.woff2) format('woff2-variations'),url(../fonts/archivo-latin-wght-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/geist-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/geist-mono-latin-500-normal.woff2) format('woff2')}
 /* Hallmark · genre: atmospheric (client-overridden: maximal) · macrostructure: bespoke "Cinema Reel" (Verzish DNA)
  * theme: studied-DNA (source: hashirykw/verzish + the shop's own interior) · palette sampled from the studio:
  *   faceted black wall #09090a/#121214 · LED hex light #f4f4f6 · chrome #b0b0b5 · brass accent #c9a45c (from the shop's flyer wordmark)

@@ -11,11 +11,9 @@
 <meta property="og:image" content="assets/img/logo.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&amp;family=Archivo:wdth,wght@62..125,300..800&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1792259046">
-<link rel="preload" as="script" href="assets/vendor/gsap.min.js">
+<link rel="preload" href="assets/fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.min.css?v=1792259590">
 <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('lg_wipe')){document.documentElement.classList.add('is-entering');sessionStorage.removeItem('lg_wipe')}}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BarberShop","name":"Legacive Barber Studio","image":"assets/img/logo.png","telephone":"+1-289-988-5515","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"24 Brock Street W","addressLocality":"Uxbridge","addressRegion":"ON","addressCountry":"CA"},"url":"https://legacive.booksy.com/a","sameAs":["https://www.tiktok.com/@legacive.barbershop"]}</script>
 </head>
@@ -26,10 +24,10 @@
 <div class="veil" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"></div>
-<div class="wipe" aria-hidden="true"><div class="wipe__hex"></div><img class="wipe__logo" src="assets/img/logo.webp" alt=""></div>
+<div class="wipe" aria-hidden="true"><div class="wipe__hex"></div><img class="wipe__logo" src="assets/img/logo-sm.webp" alt="" loading="lazy"></div>
 <div class="cursor" aria-hidden="true"><span>VIEW</span></div><div class="cursor-dot" aria-hidden="true"></div>
 <header class="nav" id="nav">
-  <a href="index.html" class="brand" aria-label="Legacive Barber Studio home"><img class="brand__logo" src="assets/img/logo.webp" alt="" width="40" height="40">Legacive <b>BARBER STUDIO</b></a>
+  <a href="index.html" class="brand" aria-label="Legacive Barber Studio home"><img class="brand__logo" src="assets/img/logo-sm.webp" alt="" width="40" height="40">Legacive <b>BARBER STUDIO</b></a>
   <ul class="nav__links"><li><a href="services.html" data-nav="services">Services</a></li><li><a href="gallery.html" data-nav="gallery">Gallery</a></li><li><a href="about.html" data-nav="about">About</a></li><li><a href="contact.html" data-nav="contact">Contact</a></li></ul>
   <a href="book.html" class="btn btn--gold nav__cta mag" data-nav="book">Book a cut</a>
   <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
@@ -37,7 +35,7 @@
 <nav class="menu" id="menu" aria-label="Mobile"><a href="index.html" data-nav="home">Home <small>01</small></a><a href="services.html" data-nav="services">Services <small>02</small></a><a href="gallery.html" data-nav="gallery">Gallery <small>03</small></a><a href="about.html" data-nav="about">About <small>04</small></a><a href="contact.html" data-nav="contact">Contact <small>05</small></a><a href="book.html" data-nav="book">Book <small>06</small></a><a class="menu__call" href="tel:+12899885515">Call (289) 988-5515</a></nav>
 <main id="main">
 <section class="phero" aria-label="The work.">
-  <div class="phero__media"><img src="assets/img/poster_design.webp" alt=""><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_design.webp" src="assets/video/design.mp4" aria-hidden="true"></video></div>
+  <div class="phero__media"><img src="assets/img/poster_design.webp" alt="" decoding="async"><video data-auto muted playsinline loop preload="none" poster="assets/img/poster_design.webp" src="assets/video/design.mp4" aria-hidden="true"></video></div>
   <div class="phero__inner wrap">
     <div class="crumbs mono"><a href="index.html">Legacive</a><span>/</span>Gallery</div>
     <h1 aria-label="The work."><span class="line split">The</span><span class="line split o">work.</span></h1>
@@ -54,7 +52,7 @@
   <div class="gfilters rv" id="gfilters" role="toolbar" aria-label="Filter cuts"></div>
   <div class="ggrid" id="ggrid"></div>
 </section>
-<section class="vwall wrap" aria-labelledby="vw-h"><div class="sec-head"><h2 id="vw-h" class="rv">In <span class="au">motion.</span></h2><p class="rv">Short clips straight from the studio.</p></div><div class="vgrid"><div class="vtile rv"><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_reel.webp" src="assets/video/reel.mp4" aria-label="The turn"></video><span class="tag"><span class="dot"></span>The turn</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_design.webp" src="assets/video/design.mp4" aria-label="Design work"></video><span class="tag"><span class="dot"></span>Design work</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_detail.webp" src="assets/video/detail.mp4" aria-label="Neck design"></video><span class="tag"><span class="dot"></span>Neck design</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="metadata" poster="assets/img/poster_studio.webp" src="assets/video/studio.mp4" aria-label="Curly reveal"></video><span class="tag"><span class="dot"></span>Curly reveal</span></div></div></section>
+<section class="vwall wrap" aria-labelledby="vw-h"><div class="sec-head"><h2 id="vw-h" class="rv">In <span class="au">motion.</span></h2><p class="rv">Short clips straight from the studio.</p></div><div class="vgrid"><div class="vtile rv"><video data-auto muted playsinline loop preload="none" poster="assets/img/poster_reel.webp" src="assets/video/reel.mp4" aria-label="The turn"></video><span class="tag"><span class="dot"></span>The turn</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="none" poster="assets/img/poster_design.webp" src="assets/video/design.mp4" aria-label="Design work"></video><span class="tag"><span class="dot"></span>Design work</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="none" poster="assets/img/poster_detail.webp" src="assets/video/detail.mp4" aria-label="Neck design"></video><span class="tag"><span class="dot"></span>Neck design</span></div><div class="vtile rv"><video data-auto muted playsinline loop preload="none" poster="assets/img/poster_studio.webp" src="assets/video/studio.mp4" aria-label="Curly reveal"></video><span class="tag"><span class="dot"></span>Curly reveal</span></div></div></section>
 <section class="wrap"><div class="band rv"><div><h2>Like<br>what you see?</h2><p>Send a photo of the cut you want when you book and AK will match it.</p></div><div class="band__acts"><a class="btn mag" href="book.html">Book a cut</a><a class="btn btn--line" href="tel:+12899885515">Call the studio</a></div></div></section>
 <section class="ig wrap" aria-labelledby="ig-h">
   <div class="sec-head"><h2 id="ig-h" class="rv">Fresh cuts, <span class="au">posted daily.</span></h2><div class="ig__handles rv"><a class="btn btn--ghost" href="https://www.tiktok.com/@legacive.barbershop" target="_blank" rel="noopener">TikTok</a><a class="btn btn--ghost" href="https://www.instagram.com/legacive_barberstudio.uxbridge/" target="_blank" rel="noopener">Instagram</a><a class="btn btn--ghost" href="https://www.facebook.com/Legacive.barbershop" target="_blank" rel="noopener">Facebook</a></div></div>
@@ -65,7 +63,7 @@
   <div class="wrap">
     <div class="foot__big" aria-hidden="true">LEGACIVE</div>
     <div class="foot__cols">
-      <div><div class="foot__brand"><img class="foot__logo" src="assets/img/logo.webp" alt="" width="54" height="54"><div><strong>Legacive Barber Studio</strong><span>Fresh cut, fresh confidence.</span></div></div><p>A private, appointment-only barber studio in downtown Uxbridge, Ontario. Fades, textured cuts, designs and beard work by AK.</p></div>
+      <div><div class="foot__brand"><img class="foot__logo" src="assets/img/logo-sm.webp" loading="lazy" alt="" width="54" height="54"><div><strong>Legacive Barber Studio</strong><span>Fresh cut, fresh confidence.</span></div></div><p>A private, appointment-only barber studio in downtown Uxbridge, Ontario. Fades, textured cuts, designs and beard work by AK.</p></div>
       <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book</a></li></ul></div>
       <div><h4>Visit</h4><ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=24%20Brock%20Street%20West%2C%20Uxbridge%2C%20Ontario" target="_blank" rel="noopener">24 Brock St W</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=24%20Brock%20Street%20West%2C%20Uxbridge%2C%20Ontario" target="_blank" rel="noopener">Uxbridge, ON</a></li><li><a href="tel:+12899885515">(289) 988-5515</a></li><li><a href="https://legacive.booksy.com/a" target="_blank" rel="noopener">Booksy</a></li></ul></div>
       <div><h4>Follow</h4><ul><li><a href="https://www.tiktok.com/@legacive.barbershop" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.instagram.com/legacive_barberstudio.uxbridge/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/Legacive.barbershop" target="_blank" rel="noopener">Facebook</a></li></ul></div>
@@ -76,9 +74,9 @@
     </div>
   </div>
 </footer>
-<button class="bot-fab" id="botFab" aria-controls="bot" aria-expanded="false"><span class="bot-fab__label">Ask Legacive</span><span class="bot-fab__av"><img src="assets/img/logo.webp" alt=""><span class="bot-fab__dot"></span></span></button>
+<button class="bot-fab" id="botFab" aria-controls="bot" aria-expanded="false"><span class="bot-fab__label">Ask Legacive</span><span class="bot-fab__av"><img src="assets/img/logo-sm.webp" alt="" loading="lazy"><span class="bot-fab__dot"></span></span></button>
 <section class="bot" id="bot" role="dialog" aria-label="Legacive assistant">
-  <div class="bot__head"><img src="assets/img/logo.webp" alt=""><div class="bot__title"><strong>Legacive assistant</strong><span><span class="dot"></span>Usually instant</span></div><button class="bot__icon" id="botClose" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="bot__head"><img src="assets/img/logo-sm.webp" alt="" loading="lazy"><div class="bot__title"><strong>Legacive assistant</strong><span><span class="dot"></span>Usually instant</span></div><button class="bot__icon" id="botClose" aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <div class="bot__log" id="botLog" aria-live="polite"></div>
   <div class="bot__chips" id="botChips"></div>
   <div class="bot__err" id="botErr"></div>
@@ -93,7 +91,7 @@
 <script defer src="assets/vendor/gsap.min.js"></script>
 <script defer src="assets/vendor/ScrollTrigger.min.js"></script>
 <script defer src="assets/vendor/lenis.min.js"></script>
-<script defer src="assets/js/data.js?v=1792259046"></script>
-<script defer src="assets/js/main.js?v=1792259046"></script>
+<script defer src="assets/js/data.js?v=1792259590"></script>
+<script defer src="assets/js/main.min.js?v=1792259590"></script>
 </body>
 </html>

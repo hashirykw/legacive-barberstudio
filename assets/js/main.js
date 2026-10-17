@@ -21,9 +21,10 @@
   /* ---------- hero video: widescreen triptych on desktop, portrait reel on phones ---------- */
   const hv = $('.hero__video');
   if (hv && hv.dataset.wide) {
-    if (matchMedia('(max-width: 900px)').matches && hv.dataset.tall) { hv.src = hv.dataset.tall; hv.load(); }
     const kick = () => { if (!RM && hv.paused) hv.play().catch(() => {}); };
-    hv.addEventListener('canplay', kick); kick();
+    // start the hero video only after the page itself has loaded (poster frame shows instantly)
+    const startHero = () => { if (hv.getAttribute('src')) return; hv.src = matchMedia('(max-width: 900px)').matches ? hv.dataset.tall : hv.dataset.wide; hv.preload = 'auto'; hv.load(); hv.addEventListener('canplay', kick); kick(); };
+    if (d.readyState === 'complete') startHero(); else addEventListener('load', startHero);
     hv.addEventListener('playing', () => { const p = $('.hero__poster'); if (p) p.style.opacity = 0; });
     // never let the hero sit paused: resume after tab switches or stalls
     d.addEventListener('visibilitychange', () => { if (!d.hidden && !RM) hv.play().catch(() => {}); });
@@ -104,7 +105,7 @@
       li.setAttribute('aria-label', s.n + ', ' + (s.plus ? 'add ' : '') + '$' + s.p + ', ' + s.t + '. Book this');
       li.innerHTML = `<h3>${s.n}</h3><span class="svc__price">${s.plus ? '+' : ''}$${s.p}<small>${s.t}</small></span><p>${s.d}</p>`;
       svcList.appendChild(li);
-      const im = d.createElement('img'); im.src = img(s.img); im.alt = s.n + ' at Legacive'; im.loading = 'lazy'; if (i === 0) im.className = 'is-on'; svcView.prepend(im);
+      const im = d.createElement('img'); im.src = img(s.img); im.alt = s.n + ' at Legacive'; im.loading = 'lazy'; im.decoding = 'async'; if (i === 0) im.className = 'is-on'; svcView.prepend(im);
     });
     const svcImgs = $$('img', svcView).reverse();
     const show = i => { $$('.svc__row').forEach((r, k) => r.classList.toggle('is-on', k === i)); svcImgs.forEach((im, k) => im.classList.toggle('is-on', k === i)); $('#svcCap').textContent = SVC[i].n; $('#svcDur').textContent = SVC[i].t; };
@@ -148,7 +149,7 @@
   const ring = $('#ring'), stg = $('#ringStage');
   if (ring && stg) {
     const R = CUTS, n = R.length, step = 360 / n;
-    ring.innerHTML = R.map((r, i) => `<button class="ri" style="--a:${i * step}deg" data-k="${i}" aria-label="Open photo: ${escH(r.cap)}"><img src="${r.src}" alt="" loading="lazy" draggable="false"></button>`).join('');
+    ring.innerHTML = R.map((r, i) => `<button class="ri" style="--a:${i * step}deg" data-k="${i}" aria-label="Open photo: ${escH(r.cap)}"><img src="${r.src}" alt="" loading="lazy" decoding="async" draggable="false"></button>`).join('');
     const items = $$('.ri', ring);
     const size = () => { const w = Math.min(230, Math.max(128, stg.clientWidth * .17)); const Rr = Math.round(w * 1.02 / (2 * Math.tan(Math.PI / n))); ring.style.setProperty('--w', w + 'px'); ring.style.setProperty('--R', Rr + 'px'); stg.style.setProperty('--R', Rr + 'px'); };
     size(); addEventListener('resize', size);
@@ -411,7 +412,7 @@
     return tl;
   };
   const finish = () => { gsap.set('.hero__title .line, .phero h1 .line', { visibility: 'visible' }); gsap.set(heroChars, { yPercent: 0, rotate: 0 }); gsap.set(heroBits, { opacity: 1, y: 0 }); gsap.set(['.nav', '.bot-fab'], { autoAlpha: 1 }); if (heroHex) heroHex.paths.forEach(p => p.style.strokeDashoffset = 0); if (loader && loader.isConnected) loader.remove(); $$('.ld__meta').forEach(m => m.remove()); gsap.set(wHex, { scale: 0 }); root.classList.remove('is-entering'); gsap.ticker.lagSmoothing(400, 33); };
-  setTimeout(finish, 4500);
+  setTimeout(finish, 3000);
   gsap.ticker.lagSmoothing(0);
 
   if (loader && !seen) {
@@ -423,22 +424,22 @@
     gsap.set(kL, { yPercent: 115 }); gsap.set(ks, { opacity: 0, y: 10 }); gsap.set(['.nav', '.bot-fab'], { autoAlpha: 0 });
     const grade = $$('.hero__shade'), gradeOp = grade.map(el => parseFloat(getComputedStyle(el).opacity) || 1);
     gsap.set(grade, { opacity: 0 }); gsap.set('.hero__media', { scale: 1.3 });
-    const fontsReady = Promise.race([(d.fonts && d.fonts.load) ? d.fonts.load('900 100px "Big Shoulders Display"') : Promise.resolve(), new Promise(r => setTimeout(r, 500))]);
+    const fontsReady = Promise.race([(d.fonts && d.fonts.load) ? d.fonts.load('900 100px "Big Shoulders Display"') : Promise.resolve(), new Promise(r => setTimeout(r, 120))]);
     fontsReady.then(() => {
       gsap.timeline({ onComplete: () => gsap.ticker.lagSmoothing(400, 33) })
-        .to('.hero__media', { scale: 1.06, duration: 1.4, ease: 'power2.inOut' }, 0)
-        .to(cnt, { v: 100, duration: 1.05, ease: 'power2.inOut', onUpdate: () => { lc.textContent = String(Math.round(cnt.v)).padStart(3, '0'); } }, 0)
-        .to(kL, { yPercent: 0, duration: .7, ease: E, stagger: .04 }, 0)
-        .to(ks, { opacity: 1, y: 0, duration: .45, ease: E }, .25)
-        .add(() => { const I = $('.i', kw).getBoundingClientRect(); gsap.set(loader, { transformOrigin: (I.left + I.width / 2) + 'px ' + (I.top + I.height * .55) + 'px' }); }, .95)
-        .to([ks, metas], { opacity: 0, duration: .2, ease: 'power2.in' }, 1.0)
-        .to(loader, { scale: 80, duration: .85, ease: 'expo.in' }, 1.0)
-        .to('.hero__media', { scale: 1, duration: 1.2, ease: E }, 1.55)
-        .set(loader, { autoAlpha: 0 }, 1.84)
-        .to(grade, { opacity: i => gradeOp[i], duration: .9, ease: 'power2.out' }, 1.55)
-        .to(['.nav', '.bot-fab'], { autoAlpha: 1, duration: .6, ease: 'power2.out' }, 1.6)
-        .add(() => revealHero(0), 1.6)
-        .add(() => { loader.remove(); metas.forEach(m => m.remove()); }, 1.9);
+        .to('.hero__media', { scale: 1.04, duration: .7, ease: 'power2.inOut' }, 0)
+        .to(cnt, { v: 100, duration: .5, ease: 'power2.inOut', onUpdate: () => { lc.textContent = String(Math.round(cnt.v)).padStart(3, '0'); } }, 0)
+        .to(kL, { yPercent: 0, duration: .42, ease: E, stagger: .025 }, 0)
+        .to(ks, { opacity: 1, y: 0, duration: .3, ease: E }, .1)
+        .add(() => { const I = $('.i', kw).getBoundingClientRect(); gsap.set(loader, { transformOrigin: (I.left + I.width / 2) + 'px ' + (I.top + I.height * .55) + 'px' }); }, .48)
+        .to([ks, metas], { opacity: 0, duration: .12, ease: 'power2.in' }, .5)
+        .to(loader, { scale: 70, duration: .48, ease: 'expo.in' }, .5)
+        .to('.hero__media', { scale: 1, duration: .8, ease: E }, .8)
+        .set(loader, { autoAlpha: 0 }, .96)
+        .to(grade, { opacity: i => gradeOp[i], duration: .6, ease: 'power2.out' }, .8)
+        .to(['.nav', '.bot-fab'], { autoAlpha: 1, duration: .45, ease: 'power2.out' }, .82)
+        .add(() => revealHero(0), .82)
+        .add(() => { loader.remove(); metas.forEach(m => m.remove()); }, 1.0);
     });
   } else {
     if (loader) { loader.remove(); $$('.ld__meta').forEach(m => m.remove()); }
